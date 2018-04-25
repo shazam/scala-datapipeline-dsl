@@ -58,4 +58,4 @@ For details see [Supported Objects](Supported%20Objects.md).
 
 ## License
 
-This tool is licensed under [APL 2.0].
+This tool is licensed under [Apache License 2.0](LICENSE).
