@@ -62,12 +62,14 @@ object AwsDataPipelineCompilerHelpers {
 
     if (!clazz.getDeclaredFields.map(_.getName).contains(PipelineField)) fail(
       s"""Error: The class $className does not have a field named '$PipelineField'.
-         |Your pipeline definition singleton should include a field named 'pipeline' of type datapipeline.dsl.PipelineBuilder,
+         |Your pipeline definition singleton should include a field named '$PipelineField' of type datapipeline.dsl.PipelineBuilder,
          |e.g.:
          |
-         |object DataPipeline {
+         |object MyDataPipeline {
          |
-         |  val pipeline = datapipeline.dsl.AwsDataPipeline(name = "my-pipeline", ...)
+         |  import datapipeline.dsl._
+         |
+         |  val $PipelineField = AwsDataPipeline(name = "MyDataPipeline", ...)
          |
          |}
         """.stripMargin
