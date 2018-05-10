@@ -21,7 +21,7 @@ $ sbt assembly
 ```
 
 Create a "Hello World" AWS Data Pipeline definition Scala file:
-```
+```scala
 object HelloWorldPipeline {
 
   import datapipeline.dsl._
