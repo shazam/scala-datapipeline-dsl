@@ -70,8 +70,9 @@ object AwsDataPipelineCompilerHelpers {
 
   def reflectivelyLoadPipelineBuilder(className: String): PipelineBuilder = {
     val classLoader = {
-      val classPath = Array(new File(CurrentWorkingDir).toURI.toURL)
-      new URLClassLoader(classPath, this.getClass.getClassLoader)
+      val environmentalClasspath = Option(System.getenv("CLASSPATH")).toList.flatMap(_.split(":"))
+      val classPath = (CurrentWorkingDir :: environmentalClasspath).map(new File(_).toURI.toURL)
+      new URLClassLoader(classPath.toArray, this.getClass.getClassLoader)
     }
 
     val clazz = classLoader.loadClass(className + "$")
