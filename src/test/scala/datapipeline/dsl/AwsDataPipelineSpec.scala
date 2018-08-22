@@ -260,6 +260,7 @@ class AwsDataPipelineSpec extends WordSpec with Matchers {
           terminateAfter = Some(5.hours),
           keyPair = Some("data-engineering"),
           region = Some("us-east-1"),
+          emrLogUri = Some("s3://s3-log-bucket"),
           applications = Seq("Spark"),
           configuration = Some(EmrConfiguration(
             name = "optimize spark",
@@ -291,7 +292,7 @@ class AwsDataPipelineSpec extends WordSpec with Matchers {
             |  "coreInstanceBidPrice": "0.66",
             |  "useOnDemandOnLastAttempt": "true",
             |  "terminateAfter": "5 hours",
-            |  "emrLogUri": "s3://szm-den-aws-data-pipeline/temp/${environment}/base-pipeline/logs/emr",
+            |  "emrLogUri": "s3://s3-log-bucket",
             |  "keyPair": "data-engineering",
             |  "region": "us-east-1",
             |  "applications": ["Spark"],

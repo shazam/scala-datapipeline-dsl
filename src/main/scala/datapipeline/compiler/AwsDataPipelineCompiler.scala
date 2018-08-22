@@ -43,7 +43,8 @@ object AwsDataPipelineCompiler extends App {
 
   val pipelineBuilder: PipelineBuilder = reflectivelyLoadPipelineBuilder(className)
 
-  writePipelineJsonToFile(pipelineBuilder)
+  val filename = s"$CurrentWorkingDir${pipelineBuilder.name}.json"
+  writePipelineJsonToFile(pipelineBuilder, filename)
 
 }
 
@@ -106,9 +107,7 @@ object AwsDataPipelineCompilerHelpers {
     pipelineBuilder
   }
 
-  def writePipelineJsonToFile(pipelineBuilder: PipelineBuilder): Unit = {
-    val filename = s"$CurrentWorkingDir${pipelineBuilder.name}.json"
-
+  def writePipelineJsonToFile(pipelineBuilder: PipelineBuilder, filename: String): Unit = {
     println(s"Writing pipeline definition to: $filename")
 
     val os = new FileOutputStream(filename)
