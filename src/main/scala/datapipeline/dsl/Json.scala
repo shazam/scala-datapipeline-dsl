@@ -217,7 +217,7 @@ object ResourceJsonRenderer {
           ("coreInstanceBidPrice" -> coreInstanceBidPrice.map(_.toString)) ~
           ("useOnDemandOnLastAttempt" -> useOnDemandOnLastAttempt.map(_.toString)) ~
           ("terminateAfter" -> terminateAfter.map(_.toString)) ~
-          ("emrLogUri" -> s"s3://szm-den-aws-data-pipeline/temp/$${environment}/$pipelineName/logs/emr") ~
+          ("emrLogUri" -> emrLogUri) ~
           ("keyPair" -> keyPair) ~
           ("region" -> region) ~
           ("applications" -> applications) ~
